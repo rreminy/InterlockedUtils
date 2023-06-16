@@ -34,7 +34,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -142,7 +142,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -250,7 +250,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -358,7 +358,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -466,7 +466,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -574,7 +574,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -682,7 +682,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
@@ -790,7 +790,7 @@ public static class InterlockedUtils
 		while (true)
 		{
 		    var original = value;
-			if (original >= max) return max;
+			if (original >= max) return original;
 			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
 		}
 	}
