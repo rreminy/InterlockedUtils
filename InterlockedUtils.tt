@@ -1,0 +1,226 @@
+<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Threading" #>
+
+using System;
+using System.Threading;
+using System.Diagnostics.CodeAnalysis;
+
+namespace AG;
+
+/// <summary>Additional utility methods complementing <see cref="Interlocked"/></summary>
+[SuppressMessage("Minor Code Smell", "S4136", Justification = "Template Generated")]
+public static class InterlockedUtils
+{
+
+	<# foreach (var type in new string[] { "int", "uint", "long", "ulong", "float", "double", "nint", "nuint" })  { #>
+
+	/// <summary>Changes <paramref name="value"/> into the minimum of <paramref name="min"/> or itself and return the new <paramref name="value"/> atomically.</summary>
+	/// <param name="value">Reference containing the value to be changed</param>
+	/// <param name="min">Minimum value to compare into</param>
+	/// <returns>Minimum of <paramref name="value"/> and <paramref name="min"/></returns>
+	public static <#= type #> Min(ref <#= type #> value, <#= type #> min)
+	{
+		while (true)
+		{
+		    var original = value;
+			if (original <= min) return original;
+			if (Interlocked.CompareExchange(ref value, min, original) == original) return min;
+		}
+	}
+	
+	/// <summary>Changes <paramref name="value"/> into the maximum of <paramref name="max"/> or itself and return the new <paramref name="value"/> atomically.</summary>
+	/// <param name="value">Reference containing the value to be changed</param>
+	/// <param name="max">Maximum value to compare into</param>
+	/// <returns>Maximum of <paramref name="value"/> and <paramref name="max"/></returns>
+	public static <#= type #> Max(ref <#= type #> value, <#= type #> max)
+	{
+		while (true)
+		{
+		    var original = value;
+			if (original >= max) return max;
+			if (Interlocked.CompareExchange(ref value, max, original) == original) return max;
+		}
+	}
+
+	/// <summary>Multiplies <paramref name="value"/> with <paramref name="multiplier"/> and return the result value atomically</summary>
+	/// <param name="value">Reference containing the value to be multiplied with</param>
+	/// <param name="multiplier">Value to multiply <paramref name="value"/> with</param>
+	/// <returns>Multiplication result</returns>
+	public static <#= type #> Multiply(ref <#= type #> value, <#= type #> multiplier)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original * multiplier;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Divides <paramref name="value"/> with <paramref name="divisor"/> and return the result value atomically</summary>
+	/// <param name="value">Reference containing the value to be divided with</param>
+	/// <param name="divisor">Value to divide <paramref name="value"/> with</param>
+	/// <returns>Division result</returns>
+	public static <#= type #> Divide(ref <#= type #> value, <#= type #> divisor)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original / divisor;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Modulo <paramref name="value"/> with <paramref name="divisor"/> and return the result value atomically</summary>
+	/// <param name="value">Reference containing the value to be divided with</param>
+	/// <param name="divisor">Value to divide <paramref name="value"/> with</param>
+	/// <returns>Division modulo result</returns>
+	public static <#= type #> Modulo(ref <#= type #> value, <#= type #> divisor)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original % divisor;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Adds <paramref name="value"/> with <paramref name="add"/> and return the result value atomically</summary>
+	/// <param name="value">Reference containing the value to be added with</param>
+	/// <param name="add">Value to add <paramref name="value"/> with</param>
+	/// <returns>Addition result</returns>
+	public static <#= type #> Add(ref <#= type #> value, <#= type #> add)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original + add;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+	
+	/// <summary>Substracts <paramref name="value"/> with <paramref name="sub"/> and return the result value atomically</summary>
+	/// <param name="value">Reference containing the value to be substracted with</param>
+	/// <param name="sub">Value to substract <paramref name="value"/> with</param>
+	/// <returns>Substraction result</returns>
+	public static <#= type #> Substract(ref <#= type #> value, <#= type #> sub)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original - sub;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Increments <paramref name="value"/> by 1</summary>
+	/// <returns>Increment result</returns>
+	public static <#= type #> Increment(ref <#= type #> value) => Add(ref value, 1);
+
+
+	/// <summary>Decrements <paramref name="value"/> by 1</summary>
+	/// <returns>Decrement result</returns>
+	public static <#= type #> Decrement(ref <#= type #> value) => Substract(ref value, 1);
+
+	<# } #>
+
+	<# foreach (var type in new string[] { "int", "uint", "long", "ulong", "nint", "nuint" })  { #>
+
+	/// <summary>Shifts <paramref name="value"/> <paramref name="shift"/> bits to the left</summary>
+	/// <param name="value">Reference containing the value to be shifted</param>
+	/// <param name="shift">Shift amount</param>
+	/// <returns>Shift result</returns>
+	public static <#= type #> ShiftLeft(ref <#= type #> value, int shift)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original << shift;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Shifts <paramref name="value"/> <paramref name="shift"/> bits to the right</summary>
+	/// <param name="value">Reference containing the value to be shifted</param>
+	/// <param name="shift">Shift amount</param>
+	/// <returns>Shift result</returns>
+	public static <#= type #> ShiftRight(ref <#= type #> value, int shift)
+	{
+		while (true)
+		{
+			var original = value;
+			var result = original >> shift;
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	<# } #>
+
+	<# foreach (var type in new string[] { "int", "uint", "long", "ulong", "float", "double", "nint", "nuint", "object" })  { #>
+
+	/// <summary>Updates <paramref name="value"/> using <paramref name="operation"/> and returns the result <paramref name="value"/></summary>
+	/// <param name="value">Reference containing the value to update</param>
+	/// <param name="operation">Operation to perform on <paramref name="value"/>. This may run multiple times.</param>
+	/// <returns>Update result</returns>
+	public static <#= type #> Update(ref <#= type #> value, Func<<#= type #>, <#= type #>> operation)
+	{
+	    while (true)
+		{
+			var original = value;
+			var result = operation(value);
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Updates <paramref name="value"/> using <paramref name="operation"/> and returns the result <paramref name="value"/></summary>
+	/// <typeparam name="TState">State type</typeparam>
+	/// <param name="value">Reference containing the value to update</param>
+	/// <param name="operation">Operation to perform on <paramref name="value"/>. This may run multiple times.</param>
+	/// <param name="state">State for <paramref name="operation"/></param>
+	/// <returns>Update result</returns>
+	public static <#= type #> Update<TState>(ref <#= type #> value, Func<<#= type #>, TState, <#= type #>> operation, TState state)
+	{
+	    while (true)
+		{
+			var original = value;
+			var result = operation(value, state);
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	<# } #>
+
+	/// <summary>Updates <paramref name="value"/> using <paramref name="operation"/> and returns the result <paramref name="value"/></summary>
+	/// <typeparam name="T">Reference type</typeparam>
+	/// <param name="value">Reference containing the value to update</param>
+	/// <param name="operation">Operation to perform on <paramref name="value"/>. This may run multiple times.</param>
+	/// <returns>Update result</returns>
+	/// <remarks>Equality is checked with the == operator</remarks>
+	public static T Update<T>(ref T value, Func<T, T> operation) where T : class
+	{
+	    while (true)
+		{
+			var original = value;
+			var result = operation(value);
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+
+	/// <summary>Updates <paramref name="value"/> using <paramref name="operation"/> and returns the result <paramref name="value"/></summary>
+	/// <typeparam name="T">Reference type</typeparam>
+	/// <typeparam name="TState">State type</typeparam>
+	/// <param name="value">Reference containing the value to update</param>
+	/// <param name="operation">Operation to perform on <paramref name="value"/>. This may run multiple times.</param>
+	/// <param name="state">State for <paramref name="operation"/></param>
+	/// <returns>Update result</returns>
+	/// <remarks>Equality is checked with the == operator</remarks>
+	public static T Update<T, TState>(ref T value, Func<T, TState, T> operation, TState state) where T : class
+	{
+	    while (true)
+		{
+			var original = value;
+			var result = operation(value, state);
+			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+		}
+	}
+}
