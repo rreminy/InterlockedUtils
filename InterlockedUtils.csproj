@@ -15,6 +15,7 @@
     <Description>Interlocked Utility Methods</Description>
     <Authors>Azure Gem</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
