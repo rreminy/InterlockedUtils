@@ -11,8 +11,8 @@ using AG;
 All methods are static and can be called as follow:
 ```cs
 var value = 15;
-InterlockedUtils.Max(ref value, 12) // Returns 15
-InterlockedUtils.Min(ref value, 8) // Modifies value and returns 8 atomically
+InterlockedUtils.Max(ref value, 12); // Returns 15
+InterlockedUtils.Min(ref value, 8); // Modifies value and returns 8 atomically
 ```
 All functionality makes heavy used of the built-in Interlocked class.
 
