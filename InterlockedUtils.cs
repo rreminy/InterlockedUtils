@@ -1060,7 +1060,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1076,7 +1076,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1091,7 +1091,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1107,7 +1107,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1122,7 +1122,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1138,7 +1138,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1153,7 +1153,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1169,7 +1169,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1184,7 +1184,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1200,7 +1200,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1215,7 +1215,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1231,7 +1231,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1246,7 +1246,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1262,7 +1262,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1277,7 +1277,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1293,7 +1293,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1308,7 +1308,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1324,7 +1324,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1341,7 +1341,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value);
+			var result = operation(original);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}
@@ -1359,7 +1359,7 @@ public static class InterlockedUtils
 	    while (true)
 		{
 			var original = value;
-			var result = operation(value, state);
+			var result = operation(original, state);
 			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
 		}
 	}

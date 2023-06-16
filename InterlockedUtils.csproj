@@ -8,6 +8,11 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/rreminy/InterlockedUtils</PackageProjectUrl>
+    <PackageTags>Interlocked Utilities</PackageTags>
+    <RepositoryUrl>https://github.com/rreminy/InterlockedUtils</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Interlocked Utility Methods</Description>
+    <Authors>Azure Gem</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
