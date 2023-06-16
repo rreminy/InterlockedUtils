@@ -1,4 +1,5 @@
 
+
 # InterlockedUtils
 Provides utilities functions that can be used in addition to the built-in Interlocked class.
 
@@ -17,43 +18,43 @@ InterlockedUtils.Min(ref value, 8); // Modifies value and returns 8 atomically
 All functionality makes heavy used of the built-in Interlocked class.
 
 ## Methods
-- Add
+- **Add**
 Add methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 Note: The built-in Interlocked class only got Add for int, uint, long and ulong. You may want to use these instead unless you're doing it for the additional types implemented here.
 
-- Substract
+- **Substract**
 Substract methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- Multiply
+- **Multiply**
 Multiply methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- Divide
+- **Divide**
 Divide methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- Modulo
+- **Modulo**
 Modulo methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- Min
+- **Min**
 Min methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- Max
+- **Max**
 Max methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- ShiftLeft
+- **ShiftLeft**
 Max methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- ShiftRight
+- **ShiftRight**
 Max methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 
-- Increment
+- **Increment**
 Increment methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 Note: The built-in Interlocked class only got Add for int, uint, long and ulong. You may want to use these instead unless you're doing it for the additional types implemented here.
 
-- Decrement
+- **Decrement**
 Decrement methods for all supported types (int, uint, long, ulong, nint, nuint, float, double)
 Note: The built-in Interlocked class only got Add for int, uint, long and ulong. You may want to use these instead unless you're doing it for the additional types implemented here.
 
-- Update
+- **Update**
 Update methods for all supported types (int, uint, long, ulong, nint, nuint, float, double, object, T)
 Update allows you to perform an arbitriary operation on a value. The operation may run multiple times until succeeded
 
