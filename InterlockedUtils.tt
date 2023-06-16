@@ -195,14 +195,13 @@ public static class InterlockedUtils
 	/// <param name="value">Reference containing the value to update</param>
 	/// <param name="operation">Operation to perform on <paramref name="value"/>. This may run multiple times.</param>
 	/// <returns>Update result</returns>
-	/// <remarks>Equality is checked with the == operator</remarks>
 	public static T Update<T>(ref T value, Func<T, T> operation) where T : class
 	{
 	    while (true)
 		{
 			var original = value;
 			var result = operation(original);
-			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+			if (ReferenceEquals(result, original) || ReferenceEquals(Interlocked.CompareExchange(ref value, result, original), original)) return result;
 		}
 	}
 
@@ -213,14 +212,13 @@ public static class InterlockedUtils
 	/// <param name="operation">Operation to perform on <paramref name="value"/>. This may run multiple times.</param>
 	/// <param name="state">State for <paramref name="operation"/></param>
 	/// <returns>Update result</returns>
-	/// <remarks>Equality is checked with the == operator</remarks>
 	public static T Update<T, TState>(ref T value, Func<T, TState, T> operation, TState state) where T : class
 	{
 	    while (true)
 		{
 			var original = value;
 			var result = operation(original, state);
-			if (result == original || Interlocked.CompareExchange(ref value, result, original) == original) return result;
+			if (ReferenceEquals(result, original) || ReferenceEquals(Interlocked.CompareExchange(ref value, result, original), original)) return result;
 		}
 	}
 }
