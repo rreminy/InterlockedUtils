@@ -58,7 +58,7 @@ Update methods for all supported types (int, uint, long, ulong, nint, nuint, flo
 Update allows you to perform an arbitriary operation on a value. The operation may run multiple times until succeeded
 
 ## Disclaimer
-This class is not meant as a replacement for the built-in Interlocked class, but rather provide additional functionality based off it. All functionality makes heavy use of Interlocked.CompareExchange
+This class is not meant as a replacement for the built-in Interlocked class, but rather provide additional functionality based on it. All functionality makes heavy use of Interlocked.CompareExchange
 
 ## License
 MIT
